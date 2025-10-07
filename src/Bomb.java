@@ -13,4 +13,8 @@ public class Bomb extends cs3331Bomb implements IChoppable{
     public void move() {
         this.moveBomb();
     }
+
+    public boolean isScorable() {
+        return false;
+    }    
 }

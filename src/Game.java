@@ -1,37 +1,58 @@
 import fruitNinjaHelper.Constants;
+import fruitNinjaHelper.cs3331Blade;
 import fruitNinjaHelper.cs3331FruitNinjaGame;
 import fruitNinjaHelper.cs3331ScoreController;
 
 public class Game extends cs3331FruitNinjaGame{
 
+    cs3331Blade chopper;
     cs3331ScoreController con;
 
-    // You may need to add constructor
     public Game() {
-        this.con = new cs3331ScoreController();
+        chopper = new cs3331Blade("chopper");
+        con = new cs3331ScoreController();
+        addBlade(chopper);
     }
     
     public void updateChoppable(IChoppable item) {
-        
-        // Your code goes here
         item.move();
+
+        if(chopper.checkIntersection(item)) {
+            item.chop();
+            if(item.isScorable()) {
+                con.addToScore(1);
+            }
+        }
     }
 
     @Override
     public IChoppable launchItem() {
+        String itemType = "";
+        int rand = (int)(Math.random() * 5);
+        switch(rand) {
+            case 0 -> itemType = Constants.APPLE_PATH;
+            case 1 -> itemType = Constants.LEMON_PATH;
+            case 2 -> itemType = Constants.PEACH_PATH;
+            case 3 -> itemType = Constants.PEAR_PATH;
+            case 4 -> itemType = "bomb";
+        }
 
-        // YOUR code goes here
-        Fruit fru = new Fruit(Constants.APPLE_PATH); //hardcoded, make this generic
-        fru.wash();
-        fru.ripen();
-        return fru; // Change the return statement
+        if(itemType == "bomb") {
+            Bomb bom = new Bomb();
+            return bom;
+        }
+        else {
+            Fruit fru = new Fruit(itemType);
+            fru.wash();
+            fru.ripen();
+            return fru;
+        }
     }
 
     public cs3331ScoreController getController() {
-        return this.con;
+        return con;
     }
 
-    // Do not modify anything below this line
     @Override
     public void updateChoppableHelper() {
         this.updateChoppable(this.getCurrentItem());

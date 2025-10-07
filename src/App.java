@@ -11,10 +11,8 @@ public class App extends Application{
         frame.setTop(game.getController());
         game.startGame();
         game.updateChoppable(game.launchItem());
-        /* INSERT YOUR CODE HERE */
-        
-        
     }
+    
     public static void main(String[] args) throws Exception {
         launch(args);
     }
