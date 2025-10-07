@@ -1,6 +1,6 @@
 ## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+This is an implementation of the game, Fruit Ninja. This was done with the assistance of helper code from Dr. Dipak Singh.
 
 ## Folder Structure
 
