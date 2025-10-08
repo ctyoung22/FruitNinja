@@ -1,6 +1,9 @@
-## Getting Started
+## Overview
 
 This is an implementation of the game, Fruit Ninja. This was done with the assistance of helper code from Dr. Dipak Singh.
+
+## Resources Used
+Switch expressions in Java: https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html
 
 ## Folder Structure
 
